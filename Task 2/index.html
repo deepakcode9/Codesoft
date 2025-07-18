@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deepak Singh | Digital Marketer</title>
+  <style>
+    :root {
+      --primary: #00897b;
+      --accent: #ff7043;
+      --bg-light: #f9f9f9;
+      --dark: #263238;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    nav {
+      background: var(--primary);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      font-size: 2rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: var(--primary);
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-box h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .cta {
+      background: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 4px solid var(--primary);
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    .cta button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cta button:hover {
+      background: #ff5722;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Deepak Singh</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>Deepak Singh</h1>
+    <p>Strategic Digital Marketer Helping Brands Build, Scale, and Succeed Online</p>
+  </header>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <h2>Why Choose Me?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Targeted Marketing</h3>
+        <p>I help you reach the right audience using Google Ads & SEO to maximize conversions and ROI.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Creative Campaigns</h3>
+        <p>Eye-catching visuals, compelling copy, and viral strategy to boost awareness and engagement.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Data-Driven Growth</h3>
+        <p>Track and refine every campaign using analytics to ensure performance-driven success.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta" id="contact">
+    <h2>Ready to Skyrocket Your Business?</h2>
+    <p>Contact me today and let’s build a campaign that delivers real results.</p>
+    <button>Work With Me</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Deepak Singh | Digital Marketing Specialist</p>
+  </footer>
+
+  <!-- Hamburger Script -->
+  <script>
+    const toggleBtn = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  </script>
+
+</body>
+</html>
