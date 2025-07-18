@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .calculator {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    .display {
+      height: 60px;
+      font-size: 2rem;
+      background: #1e1e1e;
+      color: #fff;
+      text-align: right;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow-x: auto;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #f3f3f3;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    .operator {
+      background: #f9a825;
+      color: #fff;
+    }
+
+    .clear {
+      background: #e53935;
+      color: #fff;
+    }
+
+    .equal {
+      background: #43a047;
+      color: #fff;
+    }
+
+    #backspace {
+      background: #b71c1c;
+      color: #fff;
+    }
+
+    #bracket {
+      background: #f9a825;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div id="display" class="display">0</div>
+    <div class="keypad">
+      <!-- Row 1 -->
+      <button class="clear">C</button>
+      <button>9</button>
+      <button>8</button>
+      <button>7</button>
+
+      <!-- Row 2 -->
+      <button class="operator">/</button>
+      <button>6</button>
+      <button>5</button>
+      <button>4</button>
+
+      <!-- Row 3 -->
+      <button class="operator">*</button>
+      <button>3</button>
+      <button>2</button>
+      <button>1</button>
+
+      <!-- Row 4 (updated) -->
+      <button class="operator">-</button>
+      <button>.</button>
+      <button>0</button>
+      <button class="equal">=</button>
+
+      <!-- Row 5 -->
+      <button class="operator">+</button>
+      <button class="operator">%</button>
+      <button id="bracket">()</button>
+      <button id="backspace">←</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('button');
+    const bracketBtn = document.getElementById('bracket');
+    let input = '';
+    let resetDisplay = false;
+    let openBracketNext = true;
+
+    function updateDisplay(value) {
+      display.textContent = value || '0';
+    }
+
+    function calculate(expression) {
+      try {
+        return Function('"use strict"; return (' + expression + ')')();
+      } catch {
+        return 'Error';
+      }
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.textContent;
+
+        if (value === 'C') {
+          input = '';
+          resetDisplay = false;
+          updateDisplay(input);
+          return;
+        }
+
+        if (value === '=') {
+          input = calculate(input).toString();
+          updateDisplay(input);
+          resetDisplay = true;
+          return;
+        }
+
+        if (value === '←') {
+          input = input.slice(0, -1);
+          updateDisplay(input);
+          return;
+        }
+
+        if (value === '()') {
+          input += openBracketNext ? '(' : ')';
+          openBracketNext = !openBracketNext;
+          updateDisplay(input);
+          return;
+        }
+
+        if (resetDisplay && !['+', '-', '*', '/', '%'].includes(value)) {
+          input = value;
+          resetDisplay = false;
+        } else {
+          input += value;
+        }
+
+        updateDisplay(input);
+      });
+    });
+
+    // Keyboard support
+    window.addEventListener('keydown', e => {
+      const key = e.key;
+
+      if ("0123456789.+-*/%".includes(key)) {
+        if (resetDisplay && !"+-*/%".includes(key)) {
+          input = key;
+          resetDisplay = false;
+        } else {
+          input += key;
+        }
+        updateDisplay(input);
+      } else if (key === 'Enter') {
+        input = calculate(input).toString();
+        updateDisplay(input);
+        resetDisplay = true;
+      } else if (key === 'Backspace') {
+        input = input.slice(0, -1);
+        updateDisplay(input);
+      } else if (key.toLowerCase() === 'c') {
+        input = '';
+        updateDisplay(input);
+      } else if (key === '(' || key === ')') {
+        input += key;
+        updateDisplay(input);
+      }
+    });
+  </script>
+</body>
+</html>
