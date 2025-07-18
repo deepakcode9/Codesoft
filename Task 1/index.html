@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepak Singh | Web Developer</title>
+  <style>
+    :root {
+      --primary-color: #3b3b98;
+      --accent-color: #5f27cd;
+      --bg-color: #f5f5f5;
+      --text-color: #333;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: var(--white);
+      padding: 15px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    section {
+      padding: 50px 30px 30px;
+    }
+
+    #about,
+    #skills,
+    #projects {
+      padding-top: 30px;
+      padding-bottom: 20px;
+      margin-bottom: 0;
+    }
+
+    #hero {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: var(--white);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 110px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-text h3 {
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .hero-buttons .btn {
+      padding: 8px 16px;
+      margin-right: 10px;
+      border: 2px solid white;
+      border-radius: 5px;
+      background: transparent;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .hero-buttons .btn:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    p {
+      font-size: 1rem;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+
+    form {
+      max-width: 550px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2c2c74;
+    }
+
+    .contact-details {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 15px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--accent-color);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Project Cards */
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 260px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      #hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-img img {
+        margin-top: 20px;
+      }
+
+      section {
+        padding: 40px 20px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Deepak Singh</div>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="hero-text">
+      <p>Hello, I'm</p>
+      <h1>Deepak Singh</h1>
+      <h3>Web Developer</h3>
+      <p>Building robust backend solutions with elegant frontend experiences.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn">View Work</a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="./photo10.jpg" alt="Portrait of Deepak Singh" />
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About <span style="color:var(--accent-color)">Me</span></h2>
+    <p>I'm Deepak Singh, a passionate Web Developer from the CSBS branch with 1 year of experience in building scalable and user-focused applications. I deliver clean, efficient, and impactful digital experiences using modern technologies.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>HTML5 • CSS3 • JavaScript • React • Node.js • MongoDB • Git & GitHub</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Here are a few things I’ve been working on lately. More coming soon!</p>
+    <div class="project-cards">
+      <div class="project-card">
+        <h3 style="color: var(--primary-color); margin-bottom: 8px;">Landing Page</h3>
+        <p>A responsive business landing page with modern design and call-to-action elements.</p>
+        <a href="https://task002code.netlify.app/" target="_blank">Visit Site →</a>
+      </div>
+      <div class="project-card">
+        <h3 style="color: var(--primary-color); margin-bottom: 8px;">Calculator</h3>
+        <p>A smart calculator built using HTML, CSS, and JavaScript with clean UI.</p>
+        <a href="https://task003code.netlify.app/" target="_blank">Visit Site →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact <span style="color:var(--accent-color)">Me</span></h2>
+    <form aria-label="Contact form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="contact-details">
+      <p>Email: deepakssep18@gmail.com</p>
+      <p>Phone: +91 8882335171</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/deepak-singh-807b92369" target="_blank">linkedin.com/in/deepak-singh</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Deepak Singh. All rights reserved.</p>
+  </footer>
+</body>
+</html>
